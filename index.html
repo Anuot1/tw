@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>疫情防控</title>
+</head>
+
+<body style="visibility: hidden;">
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div class="box-left">
+            <div class="left-top">
+                <div class="current-num">
+                    <div>现有确诊人数（截至2021年9月14日）</div>
+                    <p>2432</p>
+                </div>
+            </div>
+            <div class="left-center">
+                <div class="title-box">
+                    <h6>累计治愈、死亡人数（截至2021年9月14日）</h6>
+                </div>
+                <div class="chart-box pie-chart">
+                    <div id="pie"></div>
+                    <div>
+                        <div class="pie-data">
+                        <p><span><i class="legend" style="background:#c99002"></i>
+                           </span>总计<span class="pie-number" style="color:#c99002">121237</span></p>
+                        </div>
+                        </div>
+                </div>
+            </div>
+            <div class="left-bottom" class="select">
+                <div class="title-box">
+                    <h6>湖北省地图</h6>
+                </div>
+                <div class="chart-box">
+                    <img src="images/123.png" alt="">
+                    <div class="filter-con" id="filCon" data-type="1">
+                    </div>
+                    <div id="gdMap" class="gd-map"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-center">
+            <div class="center-top">
+                <h1>新冠疫情防控中心</h1>
+            </div>
+            <div class="center-center">
+                <div class="weather-box">
+                    <div class="data">
+                        <p class="time" id="time">00:00:00</p>
+                        <p id="date"></p>
+                    </div>
+                </div>
+              
+                <div class="select-box">
+                </div>
+            </div>
+            <div class="center-bottom">
+                <div class="chart-box">
+                    <div id="chart4" style="width:100%;height:95%;"></div>
+                </div>
+                <div class="city-data">
+                  
+                    <ul class="ranking-box">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="box-right">
+            <div class="right-top">
+                <div class="title-box">
+                    <h6 id="barTitle">医疗物资保障组供应的医疗物资（截至2020年2月25日）</h6>
+                </div>
+                <p class="unit">单位：万件</p>
+                <div class="chart-box">
+                    <div id="chart3" style="width:100%;height:100%;"></div>
+                </div>
+                <div class="data-box" style="display:none;">
+                    <table class="table1">
+                        <tr>
+                            <td>1</td>
+                            <td colspan="3" class="table-data dph-data1">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td rowspan="2">2</td>
+                            <td rowspan="2" class="table-data dph-data2">0</td>
+                            <td>3</td>
+                            <td class="table-data dph-data3">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>4</td>
+                            <td class="table-data dph-data5">0</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">5</td>
+                            <td rowspan="2" class="dph-data6">0</td>
+                            <td>6</td>
+                            <td class="table-data dph-data7">0</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="table-data dph-data8">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>8</td>
+                            <td colspan="3" class="table-data dph-data9">0</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td colspan="3" class="table-data dph-data4">0</td>
+                        </tr>
+                    </table>
+                    <table class="table1" style="display:none;">
+                        <tr>
+                            <td>1</td>
+                            <td colspan="3" class="table-data mail-data1">1</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td rowspan="2">2</td>
+                            <td rowspan="2" class="table-data mail-data2">1</td>
+                            <td>3</td>
+                            <td class="table-data mail-data7">1</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>4</td>
+                            <td class="table-data mail-data4">1</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td colspan="3" class="mail-data6">1</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>9</td>
+                            <td colspan="3" class="mail-data3">1</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td colspan="3" class="table-data mail-data5">1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="right-center">
+                <div class="title-box">
+                    <p id="switchBtn"><span class="active" data-dataType="income">疫情防控支出资金（截至2020年年底）</span></p>
+                </div>
+                <div class="data-box">
+                    <p class="data-number" id="totalProfit">超4000亿元</p>
+                    <div class="time-box" id="timeBox">
+                        <div class="time-div">
+                            <input class="time-input" type="text" value="" id="startTime">
+                            <img src="images/selsct_time.png" alt="">
+                        </div>
+                        <div class="time-div end">
+                            <input class="time-input" type="text" value="" id="endTime">
+                            <img src="images/selsct_time.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="title-box">
+                </div>
+                <div class="data-box">
+                    <div class="settings-box">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pop-up">
+            <span class="close-pop"></span>
+            <h2 class="title">累计治愈、死亡人数</h2>
+            <div class="pop-data-box">
+                <p>123,456,789</p>
+            </div>
+        </div>
+        <div class="pop-up">
+            <span class="close-pop"></span>
+            <h2 class="title">派件入库量占比</h2>
+            <div class="chart-box pie-chart">
+                <div id="pie1"></div>
+                <div>
+                    <div class="pie-data">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="chart-box pop-chart">
+                <div id="gdMaps" class="gd-map"></div>
+            </div>
+        </div>
+
+        <div class="pop-up">
+            <div class="cont-div">
+                <div class="chart-box pop-charts">
+                    <div id="chart4s" style="width:100%;height:95%;"></div>
+                </div>
+            </div>
+            <div class="cont-div">
+                <h2 class="title" id="barTitles">支援物资</h2>
+                <div class="chart-box pop-chart">
+                    <div id="chart3s" style="width:100%;height:90%;"></div>
+                </div>
+                <div class="data-box" style="top:25%;width:8.6rem;display:none;">
+                    <table class="table2">
+                        <tr>
+                            <td>1</td>
+                            <td colspan="3" class="table-data dph-data1">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td rowspan="2">2</td>
+                            <td rowspan="2" class="table-data dph-data2">0</td>
+                            <td>3</td>
+                            <td class="table-data dph-data3">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>4</td>
+                            <td class="table-data dph-data5">0</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">5</td>
+                            <td rowspan="2" class="dph-data6">0</td>
+                            <td>6</td>
+                            <td class="table-data dph-data7">0</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="table-data dph-data8">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>8</td>
+                            <td colspan="3" class="table-data dph-data9">0</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td colspan="3" class="table-data dph-data4">0</td>
+                        </tr>
+                    </table>
+                    <table class="table2" style="display:none;">
+                        <tr>
+                            <td>1</td>
+                            <td colspan="3" class="table-data mail-data1">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td rowspan="2">2</td>
+                            <td rowspan="2" class="table-data mail-data2">0</td>
+                            <td>3</td>
+                            <td class="table-data mail-data7">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>4</td>
+                            <td class="table-data mail-data4">0</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td colspan="3" class="mail-data6">0</td>
+                        </tr>
+                        <tr class="bg-color">
+                            <td>9</td>
+                            <td colspan="3" class="mail-data3">0</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td colspan="3" class="table-data mail-data5">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="cont-div">
+                <h2 class="title" id="titles"></h2>
+                <div class="data-box  pop-time">
+                    <div class="time-box" id="timeBoxs">
+                        <div class="time-div">
+                            <input class="time-input" type="text" value="" id="startTimes">
+                            <img src="images/selsct_time.png" alt="">
+                        </div>
+                        <div class="time-div end">
+                            <input class="time-input" type="text" value="" id="endTimes">
+                            <img src="images/selsct_time.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="pop-data-box" id="totalProfits">
+                    <p></p>
+                </div>
+            </div>
+            <div class="pop-data">
+                <div class="city-data">
+                    <div class="city-box">
+                        <p id="titleQs">各地<span>驰援</span>到武汉</p>
+                        <ul class="city-btn" data-city="2">
+                            <li class="active">城市</li>
+                            <li>陕西</li>
+                            <li>河北</li>
+                            <li>河南</li>
+                            <li>天津</li>
+                            <li>北京</li>
+                            <li>上海</li>
+                            <li>四川</li>
+                            <li>重庆</li>
+                            <li>安徽</li>
+                            <li>山东</li>
+                            <li>江西</li>
+                            <li>广东</li>
+                            <li>浙江</li>
+                            <li>贵州</li>
+                            <li>湖南</li>
+                            <li>江西</li>
+                        </ul>
+                    </div>
+                    <ul class="ranking-box">
+                        <li><span></span>
+                            <p>支援城市</p>
+                            <p>医护人员数</p>
+                        </li>
+                        <!--                        <li><span>1</span><p>上海</p><p>1sss25(万件)</p></li>-->
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="pop-up">
+            <span class="close-pop"></span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer/layer.min.js"></script>
+<script type="text/javascript" src="js/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+<script type="text/javascript" src="js/data/guangdong.js"></script>
+<!--<script type="text/javascript" src="js/data/hubei.js"></script>-->
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $("body").css('visibility', 'visible');
+        var localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+        localStorage.setItem("data", localData);
+        $('#conBtn').on('click', function () {
+            localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem("data", localData);
+                var arr = localStorage.getItem("data").split(',');
+                $('#name_a').html(arr[0]);
+                $('#date_a').html(arr[1]);
+                $('#lea_a').html(arr[2]);
+            }
+        })
+        $('#fangda').on('click', function () {
+            if ($(this).siblings('ul').is(":hidden")) {
+                $(this).addClass('active').siblings('ul').show();
+            } else {
+                $(this).removeClass('active').siblings('ul').hide();
+            }
+        })
+
+        $('.modal-btn>li').on('click', function () {
+            var index = $(this).index();
+            if (index <= 2) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(index).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+            } else if (index > 2 && index < 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                if (index != 3) {
+                    $('.pop-data .ranking-box').hide();
+                } else {
+                    $('.pop-data .ranking-box').show();
+                }
+                $('.cont-div').eq(index - 3).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+            } else if (index == 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                $('.pop-data .ranking-box').hide();
+                if ($('#switchBtn').find('.active').data('datatype') == "income") {
+                    $('#titles').html('收入数据');
+                    $('#totalProfits').html('123,456.5元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+                } else if ($('#switchBtn').find('.active').data('datatype') == 'expend') {
+                    $('#titles').html('支出数据');
+                    $('#totalProfits').html('32,111.4元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('div').attr('style', 'visibility: hidden');
+                }
+            }
+        })
+    })
+</script>
+
+
+
+</html>
