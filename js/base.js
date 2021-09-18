@@ -1297,7 +1297,7 @@ var chart4Data = [{
 chart4(chart4Data, 1, '');
 
 function chart4(data, type, chartType) {
-    var str = '<li><span></span><p>支援城市</p><p>医护人员</p></li><li><span></span><p>截止日期2020/2/25</p></li>';
+    var str = '<li><span></span><p>支援城市</p><p>医护人员</p></li><li><span></span><p>截至2020/2/25</p></li>';
     for (var i = 0; i < 15; i++) {
         str += '<li><span>' + (i + 1) + '</span><p>' + data[i].name + '</p><p>' + data[i].value + '</p></li>';
     }
